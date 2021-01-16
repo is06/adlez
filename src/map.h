@@ -1,10 +1,12 @@
 #ifndef MAP_H
 #define MAP_H
 
-#include <map>
+#include <unordered_map>
 #include <string>
 #include "entity.h"
 #include "game.h"
+
+using namespace std;
 
 class Entity;
 class Game;
@@ -25,7 +27,7 @@ protected:
     Entity* entity(const string& name);
 
 private:
-    std::map<std::string, Entity*> m_entities;
+    unordered_map<string, Entity*> m_entities;
     Game* m_game;
 };
 

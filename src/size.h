@@ -3,8 +3,18 @@
 
 struct Size
 {
-    int width;
-    int height;
+    int width = 0;
+    int height = 0;
+
+    Size()
+    {
+
+    }
+    Size(int w, int h)
+    {
+        width = w;
+        height = h;
+    }
 };
 
 #endif // SIZE_H

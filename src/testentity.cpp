@@ -4,9 +4,8 @@
 
 TestEntity::TestEntity(Map* map) : Entity(map)
 {
-    auto texture = map->game()->content()->load_texture("block");
-
-    sprite = new Sprite(map->game()->sprite_batch(), texture);
+    sprite = new Sprite(map->game()->sprite_batch(),
+                        map->game()->content()->load_texture("block"));
 }
 
 void TestEntity::update()
@@ -20,7 +19,7 @@ void TestEntity::draw()
 {
     Entity::draw();
 
-    sprite->draw();
+    sprite->draw(m_position);
 }
 
 TestEntity::~TestEntity()

@@ -35,6 +35,7 @@ private:
     Graphics* m_graphics;
     Map* m_current_map;
     SpriteBatch* m_sprite_batch;
+    Texture* m_in_game_frame_buffer;
 
     bool running;
 };

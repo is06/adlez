@@ -1,4 +1,5 @@
 #include <SDL2/SDL.h>
+#include "size.h"
 #include "texture.h"
 
 Texture::Texture(SDL_Texture* sdl_texture)

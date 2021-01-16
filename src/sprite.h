@@ -13,7 +13,7 @@ public:
     Sprite(SpriteBatch* sprite_batch, Texture* texture);
 
     void update();
-    void draw();
+    void draw(Point position);
 
 private:
     SpriteBatch* m_sprite_batch;

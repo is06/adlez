@@ -1,3 +1,5 @@
+#include "point.h"
+#include "size.h"
 #include "sprite.h"
 #include "spritebatch.h"
 #include "texture.h"
@@ -13,11 +15,11 @@ void Sprite::update()
 
 }
 
-void Sprite::draw()
+void Sprite::draw(Point position)
 {
     m_sprite_batch->begin();
     m_sprite_batch->draw(m_texture,
-                         Rectangle(0, 0, 16, 16),
-                         Rectangle(0, 0, 16, 16));
+                         Rectangle(Point(0, 0), Size(16, 16)),
+                         Rectangle(position, Size(16, 16)));
     m_sprite_batch->end();
 }

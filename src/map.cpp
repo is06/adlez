@@ -1,11 +1,13 @@
 #include "game.h"
 #include "map.h"
+#include "point.h"
 #include "testentity.h"
 
 Map::Map(Game* game)
 {
     m_game = game;
     add_entity("test", new TestEntity(this));
+    entity("test")->set_position(Point(32, 32));
 }
 
 void Map::update()

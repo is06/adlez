@@ -3,8 +3,18 @@
 
 struct Point
 {
-    int x;
-    int y;
+    int x = 0;
+    int y = 0;
+
+    Point()
+    {
+
+    }
+    Point(int x, int y)
+    {
+        this->x = x;
+        this->y = y;
+    }
 };
 
 #endif // POINT_H

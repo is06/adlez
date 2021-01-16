@@ -2,6 +2,7 @@
 #define ENTITY_H
 
 #include "map.h"
+#include "point.h"
 
 class Map;
 
@@ -14,8 +15,11 @@ public:
     virtual void update();
     virtual void draw();
 
+    void set_position(Point position);
+
 protected:
-    Map* map;
+    Map* m_map;
+    Point m_position;
 };
 
 #endif // ENTITY_H

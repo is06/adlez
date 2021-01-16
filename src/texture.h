@@ -2,6 +2,9 @@
 #define TEXTURE_H
 
 #include <SDL2/SDL.h>
+#include "size.h"
+
+struct Size;
 
 class Texture
 {

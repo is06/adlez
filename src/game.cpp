@@ -26,10 +26,55 @@ Game::Game()
     m_content = new ContentLoader(m_renderer);
     m_graphics = new Graphics(m_renderer);
     m_sprite_batch = new SpriteBatch(m_renderer);
-
     m_current_map = new Map(this);
+    m_in_game_frame_buffer = new Texture(SDL_CreateTexture(m_renderer, SDL_PIXELFORMAT_RGBA32, SDL_TEXTUREACCESS_TARGET, 320, 180));
 
     running = true;
+}
+
+void Game::update()
+{
+    if (m_current_map != nullptr) {
+        m_current_map->update();
+    }
+}
+
+void Game::draw()
+{
+    auto color = SDL_Color();
+    color.r = 0;
+    color.g = 0;
+    color.b = 0;
+    color.a = 255;
+
+    m_graphics->set_render_target(m_in_game_frame_buffer);
+    m_graphics->clear_frame_buffer(color);
+    if (m_current_map != nullptr) {
+        m_current_map->draw();
+    }
+
+    m_graphics->set_render_target(nullptr);
+
+    m_sprite_batch->begin();
+    m_sprite_batch->draw(m_in_game_frame_buffer, Rectangle(0, 0, 320, 180), Rectangle(0, 0, 960, 540));
+    m_sprite_batch->end();
+
+    m_graphics->end_render();
+}
+
+void Game::quit()
+{
+    running = false;
+}
+
+ContentLoader* Game::content()
+{
+    return m_content;
+}
+
+SpriteBatch* Game::sprite_batch()
+{
+    return m_sprite_batch;
 }
 
 void Game::run()
@@ -50,45 +95,6 @@ void Game::run()
 
         this_thread::yield();
     }
-}
-
-void Game::update()
-{
-    if (m_current_map != nullptr) {
-        m_current_map->update();
-    }
-}
-
-void Game::draw()
-{
-    auto color = SDL_Color();
-    color.r = 0;
-    color.g = 0;
-    color.b = 0;
-    color.a = 255;
-
-    m_graphics->clear_frame_buffer(color);
-
-    if (m_current_map != nullptr) {
-        m_current_map->draw();
-    }
-
-    m_graphics->end_render();
-}
-
-void Game::quit()
-{
-    running = false;
-}
-
-ContentLoader* Game::content()
-{
-    return m_content;
-}
-
-SpriteBatch* Game::sprite_batch()
-{
-    return m_sprite_batch;
 }
 
 Game::~Game()
