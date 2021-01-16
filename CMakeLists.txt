@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(myzeldanes LANGUAGES CXX)
+project(aldez LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -8,15 +8,32 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(SDL2 REQUIRED)
 include_directories(${SDL2_INCLUDE_DIRS})
 
-add_executable(myzeldanes
+add_executable(aldez
     src/main.cpp
+    src/contentloader.h
+    src/contentloader.cpp
+    src/entity.h
+    src/entity.cpp
     src/game.h
     src/game.cpp
     src/graphics.h
     src/graphics.cpp
     src/map.h
     src/map.cpp
+    src/point.h
+    src/rectangle.h
+    src/size.h
+    src/sprite.h
+    src/sprite.cpp
     src/spritebatch.h
     src/spritebatch.cpp
+    src/texture.h
+    src/texture.cpp
+
+    src/testentity.h
+    src/testentity.cpp
 )
-target_link_libraries(myzeldanes ${SDL2_LIBRARIES})
+target_link_libraries(aldez
+    ${SDL2_LIBRARIES}
+    SDL2_image
+)

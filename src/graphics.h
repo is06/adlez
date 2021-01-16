@@ -6,11 +6,11 @@
 class Graphics
 {
 public:
-    Graphics(SDL_Window* window);
+    Graphics(SDL_Renderer* renderer);
     ~Graphics();
 
-    void clearFrameBuffer(SDL_Color color);
-    void endRender();
+    void clear_frame_buffer(SDL_Color color);
+    void end_render();
 
 private:
     SDL_Renderer* renderer;

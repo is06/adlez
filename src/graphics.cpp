@@ -1,18 +1,18 @@
 #include <SDL2/SDL.h>
 #include "graphics.h"
 
-Graphics::Graphics(SDL_Window* window)
+Graphics::Graphics(SDL_Renderer* renderer)
 {
-    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+    this->renderer = renderer;
 }
 
-void Graphics::clearFrameBuffer(SDL_Color color)
+void Graphics::clear_frame_buffer(SDL_Color color)
 {
     SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
     SDL_RenderClear(renderer);
 }
 
-void Graphics::endRender()
+void Graphics::end_render()
 {
     SDL_RenderPresent(renderer);
 }

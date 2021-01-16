@@ -1,10 +1,11 @@
 #include <SDL2/SDL.h>
 #include "game.h"
+#include "rectangle.h"
 #include "spritebatch.h"
 
-SpriteBatch::SpriteBatch(SDL_Window* window)
+SpriteBatch::SpriteBatch(SDL_Renderer* renderer)
 {
-    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+    this->renderer = renderer;
 }
 
 void SpriteBatch::begin()
@@ -12,18 +13,20 @@ void SpriteBatch::begin()
 
 }
 
-void SpriteBatch::draw(SDL_Texture *texture, SDL_Rect destination)
+void SpriteBatch::draw(Texture* texture, Rectangle source, Rectangle destination)
 {
-    SDL_RenderCopy(renderer, texture, nullptr, &destination);
+    SDL_RenderCopy(renderer,
+                   texture->get_sdl_texture(),
+                   source.to_sdl_rect(),
+                   destination.to_sdl_rect());
 }
 
 void SpriteBatch::end()
 {
-    SDL_RenderPresent(renderer);
+
 }
 
 SpriteBatch::~SpriteBatch()
 {
-    SDL_DestroyRenderer(renderer);
-    renderer = nullptr;
+
 }
