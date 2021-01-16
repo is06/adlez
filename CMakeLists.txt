@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 find_package(SDL2 REQUIRED)
 include_directories(${SDL2_INCLUDE_DIRS})
 
-add_executable(aldez
+add_executable(adlez
     src/main.cpp
     src/contentloader.h
     src/contentloader.cpp
@@ -33,7 +33,7 @@ add_executable(aldez
     src/testentity.h
     src/testentity.cpp
 )
-target_link_libraries(aldez
+target_link_libraries(adlez
     ${SDL2_LIBRARIES}
     SDL2_image
 )
