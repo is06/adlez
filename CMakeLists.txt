@@ -10,6 +10,9 @@ include_directories(${SDL2_INCLUDE_DIRS})
 
 add_executable(adlez
     src/main.cpp
+    src/asefile.h
+    src/asefileloader.h
+    src/asefileloader.cpp
     src/contentloader.h
     src/contentloader.cpp
     src/entity.h
@@ -36,4 +39,10 @@ add_executable(adlez
 target_link_libraries(adlez
     ${SDL2_LIBRARIES}
     SDL2_image
+    z
 )
+
+file(INSTALL
+    ./content/block.png
+    ./content/test.ase
+    DESTINATION ./content)
